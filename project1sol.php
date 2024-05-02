@@ -44,7 +44,7 @@
         <br>
     
         <div>
-        <select name="gender" id="gender" title="Choose your gender Identity, if you don't want to say then you can say 'Other'">
+        <select name="gender" id="gender" title="Choose your gender Identity, if you don't want to say then you can say 'Other'" required>
             <option value="">--Please select your gender--</option>
             <option value="ma">Male</option>
             <option value="fe">Female</option>
@@ -53,9 +53,10 @@
             <option value="ag">Agender</option>
             <option value="ot">Choose not to say/Other</option>
         </select>
+        <input type=hidden name="Gender Text" id="GenderTextId" title="Type out your Gender Identity here.">
         </div>
 
-        <div name = "version-field">
+        <div name = "version-field" display="none">
             <label> What version of PHP do you use? (only include the main version number) <input type="number" name="version" id="version" min="1", max="9" title="Select what Major version of PHP you use (1 to 9)"required> </label>
         </div>
 

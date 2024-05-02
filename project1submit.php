@@ -74,6 +74,11 @@ function validate(){
         return "Please select a gender from the gender dropdown.";
     }
 
+    if ($_POST["gender"] == "ot" && strlen($_POST["GenderTextId"]) < 0)
+    {
+        return "Please enter in your gender in the textbox.";
+    }
+
     # Version
     if(!is_numeric($_POST["version"])){
         return "Please enter a number for Version.";
@@ -95,10 +100,18 @@ function sanitize(){
     $email = filter_var($_POST["email-name"], FILTER_VALIDATE_EMAIL);
     $age = (int)$_POST["age"];
     $gender = htmlentities($_POST["gender"]);
+    $genText = htmlentities($_POST["GenderTextId"]);
     $version = (int)$_POST["version"];
     $favorite = htmlentities($_POST["favorite"]);
 
-    return array($email, $age, $gender, $version, $favorite);
+    if ($gender == "ot")
+    {
+        return array($email, $age, $genText, $version, $favorite);
+    }
+    else
+    {
+        return array($email, $age, $gender, $version, $favorite);
+    }
 }
 
 /**

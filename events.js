@@ -5,6 +5,7 @@ $('#button-submit-form-id').click(function() {
     var gender_qst = document.getElementById("gender").value
     var verison_qst = document.getElementById("version").value;
     var favorite_qst = document.getElementById("favorite").value;
+    var gender_text = document.getElementById("GenderTextId").value;
     var age_qst = false;
 
     for(var i = 13; i < 65; i = i + 5)
@@ -59,8 +60,20 @@ $('#button-submit-form-id').click(function() {
     }
     else
     {
-        document.getElementById("gender").style.borderColor = "revert";
-        document.getElementById("gender").style.backgroundColor = "revert";
+        if (document.getElementById("GenderTextId").required == true && document.getElementById("GenderTextId").value == "")
+        {
+            document.getElementById("GenderTextId").style.borderColor = "red";
+            document.getElementById("GenderTextId").style.backgroundColor = "red";
+            document.getElementById("gender").style.borderColor = "red";
+            document.getElementById("gender").style.backgroundColor = "red";
+        }
+        else
+        {
+            document.getElementById("GenderTextId").style.borderColor = "revert";
+            document.getElementById("GenderTextId").style.backgroundColor = "revert";
+            document.getElementById("gender").style.borderColor = "revert";
+            document.getElementById("gender").style.backgroundColor = "revert";
+        }
     }
 
     if (verison_qst == "")
@@ -84,6 +97,23 @@ $('#button-submit-form-id').click(function() {
         document.getElementById("favorite").style.borderColor = "revert";
         document.getElementById("favorite").style.backgroundColor = "revert";
     }
+});
+
+$('#gender').on("change", function() {
+    var gender_qst = document.getElementById("gender").value;
+
+    if (gender_qst == "ot")
+    {
+        document.getElementById("GenderTextId").type = "text";
+        document.getElementById("GenderTextId").required = true;
+    }
+    else
+    {
+        document.getElementById("GenderTextId").type = "hidden";
+        document.getElementById("GenderTextId").required = false;
+    }
+
+    console.log("Selected");
 });
 
 $('#favorite').on("keyup", function() {
